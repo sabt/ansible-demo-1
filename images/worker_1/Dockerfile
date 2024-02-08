@@ -20,7 +20,7 @@ USER ansible
 
 # Add the amsible user authorized_keys
 RUN  mkdir /home/ansible/.ssh
-COPY --chown=ansible:ansible --chmod=0600 id_rsa.pub /home/ansible/.ssh/authorized_keys
+COPY --chown=ansible:ansible --chmod=0600 authorized_keys /home/ansible/.ssh/authorized_keys
 RUN chmod -R og-rwx /home/ansible/.ssh
 
 # Start the sshd and switch back to user ansible

@@ -38,4 +38,4 @@ RUN mkdir /home/ansible/.ssh
 RUN chmod og-rwx /home/ansible/.ssh
 COPY --chown=ansible:ansible --chmod=600 id_rsa /home/ansible/.ssh/id_rsa
 COPY --chown=ansible:ansible --chmod=600 id_rsa.pub /home/ansible/.ssh/id_rsa.pub
-COPY --chown=ansible:ansible --chmod=644 step-1 /home/ansible/step-1
+COPY --chown=ansible:ansible --chmod=644 demo/ /home/ansible/

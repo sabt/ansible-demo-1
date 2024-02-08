@@ -1,0 +1,5 @@
+ssh_host_*key
+ssh_host_*key.pub
+id_rsa
+id_rsa.pub
+authorized_keys
