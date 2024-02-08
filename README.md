@@ -1,12 +1,15 @@
 # Demo environment for Ansible
 
-## Preparation
+## Quickstart
 
 After checkout:
 
 - Run `generate-keys.sh` script. This will generate SSH keys for the demo environment.
 - Run `docker-compose build`. This will build the necessary Docker images.
 - Run `docker-compose up`. This wil start the demo environment.
+- Run `docker exec -i -t main /bin/bash` to enter the main container.
+
+## Description
 
 ## Naming and labeling convention
 
@@ -27,6 +30,8 @@ All docker objects follow this naming convention:
     <PROJECT>.<MODULE>.<COMPONENT>.<NAME>
 ```
 Example: `com.gft.devops-event.ansible-demo-1.infrastructure.generate-keys.main`
+
+Exception: The actual containers, which are named for ease of use and better comprehensability of the demo.
 
 ## Cleanup
 
