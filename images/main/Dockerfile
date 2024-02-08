@@ -17,8 +17,10 @@ RUN apk --update add \
       pipx \
       py3-pip \
       python3 \
+      strace \
       sudo \
       util-linux \
+      vim \
       wget \
       xmlstarlet \
       yq
@@ -32,10 +34,14 @@ USER ansible
 WORKDIR /home/ansible
 env PATH="/home/ansible/.local/bin:$PATH"
 
-RUN pipx install ansible-core
-
 RUN mkdir /home/ansible/.ssh
 RUN chmod og-rwx /home/ansible/.ssh
 COPY --chown=ansible:ansible --chmod=600 id_rsa /home/ansible/.ssh/id_rsa
 COPY --chown=ansible:ansible --chmod=600 id_rsa.pub /home/ansible/.ssh/id_rsa.pub
-COPY --chown=ansible:ansible --chmod=644 demo/ /home/ansible/
+COPY --chown=ansible:ansible demo/ /home/ansible/
+
+RUN find /home/ansible/ -type f -exec chmod a-x {} \; && \
+    chmod -R o-rwx,g-w /home/ansible/
+
+RUN pipx install ansible-core
+

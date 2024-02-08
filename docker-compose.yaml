@@ -74,6 +74,7 @@ services:
     stop_grace_period: 1s
     networks:
       - default
+    # command: /usr/sbin/sshd -d
     labels:
       CUSTOMER: com.gft.devops-event
       PROJECT: com.gft.devops-event.ansible-demo-1

@@ -1,2 +1,0 @@
-ansible-playbook -i inventory.yaml load-ssh-hostkeys.yaml
-ansible -i inventory.yaml -m ping all

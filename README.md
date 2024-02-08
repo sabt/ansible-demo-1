@@ -4,7 +4,6 @@
 
 After checkout:
 
-- Run `generate-keys.sh` script. This will generate SSH keys for the demo environment.
 - Run `docker-compose build`. This will build the necessary Docker images.
 - Run `docker-compose up`. This wil start the demo environment.
 - Run `docker exec -i -t main /bin/bash` to enter the main container.
@@ -77,5 +76,5 @@ Except for the steps showing the dynamic inventory feature, all steps contain an
 
 ## `step-1`
 
-This shows the basic usage of ansible. As a first step, you should call `ansible-playbook -i inventory.yaml load-ssh-hostkeys.yaml`. This will ensure that the ssh host-keys of the target containers are known to the ansible host. After that, you can call `ansible-playbook -i inventory.yaml ping.yaml` to check if the target containers are reachable.
+This shows the basic usage of ansible. You can call `ansible -i inventory.yaml -m ping all` to check if the target containers are reachable.
 
