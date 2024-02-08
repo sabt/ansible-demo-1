@@ -1,0 +1,5 @@
+all:
+  hosts:
+    worker_1:
+    worker_2:
+    database:
