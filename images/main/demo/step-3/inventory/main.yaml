@@ -1,0 +1,14 @@
+all:
+  hosts:
+    webserver:
+      ansible_host: worker_1
+      http_directory: /data/webserver
+
+    redis:
+      ansible_host: worker_2
+
+    database:
+      ansible_host: database
+
+  vars:
+    log_directory: /var/log

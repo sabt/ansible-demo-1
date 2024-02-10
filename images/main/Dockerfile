@@ -13,8 +13,9 @@ RUN apk --update add \
       jq \
       openssh-client \
       openssh-server \
-      procps \
       pipx \
+      postgresql16-client \
+      procps \
       py3-pip \
       python3 \
       strace \

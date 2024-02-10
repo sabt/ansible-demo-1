@@ -3,11 +3,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y 
 RUN apt-get install -y openssh-server python3 bash sudo
 
-# Initialise the postgresql database
-RUN /usr/bin/pg_createcluster 16 main
-
 # copy the startup script to start sshd and postgresql
-COPY startup.sh /root/startup.sh
+COPY startup.sh /usr/local/bin/startup.sh
 
 # Copy the ssh server keys
 COPY ssh_host_* /etc/ssh/
@@ -27,4 +24,4 @@ COPY --chown=ansible:ansible --chmod=0600 authorized_keys /home/ansible/.ssh/aut
 RUN chmod -R og-rwx /home/ansible/.ssh
 
 USER root
-CMD /root/startup.sh
+ENTRYPOINT [ "/usr/local/bin/startup.sh" ]

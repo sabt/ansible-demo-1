@@ -1,0 +1,30 @@
+##############################################################################
+
+- name: Webservers
+  hosts: webserver
+
+  tasks:
+
+    - name: Show http directory
+      ansible.builtin.debug:
+        msg: "HTTP directory: '{{ http_directory }}'"
+
+    - name: Show log directory
+      ansible.builtin.debug:
+        msg: "LOG directory: '{{ log_directory }}'"
+
+##############################################################################
+
+- name: Other
+  hosts: all:!webserver
+  vars:
+    audit_directory: /var/audit
+  tasks:
+
+    - name: Show audit directory
+      ansible.builtin.debug:
+        msg: "AUDIT directory: '{{ audit_directory }}'"
+
+    - name: Show log directory
+      ansible.builtin.debug:
+        msg: "LOG directory: '{{ log_directory }}'"

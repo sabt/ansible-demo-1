@@ -1,0 +1,10 @@
+##############################################################################
+
+- name: Show object names
+  hosts: all
+
+  tasks:
+
+    - name: Show hostname
+      ansible.builtin.debug:
+        msg: "Names: '{{ ansible_hostname }}'  -->  '{{ inventory_hostname }}'"

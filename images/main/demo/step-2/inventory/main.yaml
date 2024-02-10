@@ -1,0 +1,7 @@
+all:
+  hosts:
+    webserver:
+      ansible_host: worker_1
+    redis:
+      ansible_host: worker_2
+    database:

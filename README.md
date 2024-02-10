@@ -4,6 +4,7 @@
 
 After checkout:
 
+- Run generate-keys.sh to create the necessary SSH keys.
 - Run `docker-compose build`. This will build the necessary Docker images.
 - Run `docker-compose up`. This wil start the demo environment.
 - Run `docker exec -i -t main /bin/bash` to enter the main container.
@@ -31,6 +32,7 @@ All docker objects follow this naming convention:
 Example: `com.gft.devops-event.ansible-demo-1.infrastructure.generate-keys.main`
 
 Exception: The actual containers, which are named for ease of use and better comprehensability of the demo.
+The containers still have all the labels mentioned above.
 
 ## Cleanup
 
@@ -48,7 +50,7 @@ The image `com.gft.devops-event.ansible-demo-1.infrastructure.ansible-host:1.0.0
 
 The images `com.gft.devops-event.ansible-demo-1.app.worker.1:1.0.0`, `com.gft.devops-event.ansible-demo-1.app.worker.2:1.0.0` and `com.gft.devops-event.ansible-demo-1.app.worker.3:1.0.0` are meant to be used as targets for the ansible playbooks. They contain a very basic linux distribution with python3 installed. They all run an ssh daemon on port 22, allowing the ansible host to connect to them.
 
-The image `com.gft.devops-event.ansible-demo-1.app.database.main:1.0.0` is meant to be used as a database server. It contains a very basic linux distribution with python3 installed. It runs an ssh daemon on port 22 and a postgresql server on port 5432.
+The image `com.gft.devops-event.ansible-demo-1.app.database.postgresql:1.0.0` is meant to be used as a database server. It contains a very basic linux distribution with python3 installed. It runs an ssh daemon on port 22 and a postgresql server on port 5432.
 
 ## Containers
 
@@ -62,7 +64,7 @@ These container contain two different linux distributions and run an ssh daemon 
 
 ### Container `database`
 
-This container runs a postgresql database `main`. It allows admin access to the database with the user `postgres` and the password `admin`. The database is reachable on port 5432. Like the other containers it too runs an ssh daemon on port 22.
+This container runs a postgresql database `postgres`. It allows admin access to the database with the user `postgres` and the password `postgres`. The database is reachable on port 5432. Like the other containers it too runs an ssh daemon on port 22.
 
 ### Container `comgftdevops-eventansible-demo-1-worker_3-1` and `comgftdevops-eventansible-demo-1-worker_3-2`
 
@@ -73,8 +75,3 @@ These are deployed as replicas by docker-compose. They are based on the same con
 In the container main you'll find the directories `/home/ansible/step-1`, ... These directories contain the individual steps of the demonstration.
 
 Except for the steps showing the dynamic inventory feature, all steps contain an inventory.yaml file, that contains the containers `worker_1`, `worker_2` and `database` as targets. The individual steps may add or remove information from this file, according to the step's purpose.
-
-## `step-1`
-
-This shows the basic usage of ansible. You can call `ansible -i inventory.yaml -m ping all` to check if the target containers are reachable.
-
