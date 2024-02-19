@@ -5,6 +5,7 @@ set -e
 base_dir=$(realpath "$0" )
 base_dir=$(dirname "$base_dir" )
 docker_dir="$base_dir/images/generate-keys"
+current_user_id=$( id -u )
 
 docker image build \
   -f "$docker_dir/Dockerfile" \
@@ -29,4 +30,5 @@ docker container run \
     while read d ; do \
       if [[ ! -d "/mnt/\$d" ]] ; then continue ; fi ; \
       cp -vpR "/data/\$d/" "/mnt/" ; \
-    done"
+    done ; \
+    chown -R $current_user_id:$current_user_id /mnt/ "
