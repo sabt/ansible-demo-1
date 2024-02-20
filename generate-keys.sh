@@ -23,7 +23,7 @@ docker image build \
 docker container run \
   -t \
   --rm \
-  --volume "$base_dir/images:/mnt" \
+  --volume "/$base_dir/images:/mnt" \
   "com.gft.devops-event.ansible-demo-1.infrastructure.generate-keys.main:1.0.0" \
   bash -c "cd /data && \
     find . -maxdepth 1 -mindepth 1 -type d | \
