@@ -33,7 +33,9 @@ RUN adduser -D ansible && \
     addgroup ansible ping
 USER ansible
 WORKDIR /home/ansible
-env PATH="/home/ansible/.local/bin:$PATH"
+# instruction missing uppercase
+# env PATH="/home/ansible/.local/bin:$PATH"  
+ENV PATH="/home/ansible/.local/bin:$PATH"
 
 RUN mkdir /home/ansible/.ssh
 RUN chmod og-rwx /home/ansible/.ssh
