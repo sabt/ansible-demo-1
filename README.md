@@ -4,10 +4,12 @@
 
 After checkout:
 
-- Run generate-keys.sh to create the necessary SSH keys.
+- Make scripts executable: ``chmod ug+rx ./cleanup.sh ./generate-keys.sh``.
+- Run ``./generate-keys.sh`` to create the necessary SSH keys.
 - Run `docker-compose build`. This will build the necessary Docker images.
 - Run `docker-compose up`. This wil start the demo environment.
 - Run `docker exec -i -t main /bin/bash` to enter the main container.
+- After you're done, call ``./cleanup.sh`` to remove all containers and images of this session.
 
 ## Description
 
