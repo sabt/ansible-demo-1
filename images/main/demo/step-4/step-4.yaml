@@ -1,0 +1,7 @@
+## Playbook to install Apache
+---
+- name: Install and configure Apache
+  hosts: webserver
+  become: true
+  roles:
+    - apache
