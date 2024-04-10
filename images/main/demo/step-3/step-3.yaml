@@ -13,6 +13,31 @@
       ansible.builtin.debug:
         msg: "LOG directory: '{{ log_directory }}'"
 
+    - name: Show temp directory path
+      ansible.builtin.debug:
+        msg: "TEMP directory: '{{ temp_directory }}'"
+
+##############################################################################
+
+- name: Create directory and file with content
+  hosts: webserver
+
+  tasks:
+    - name: Create directory
+      file:
+        path: "{{ temp_directory }}"
+        state: directory
+
+    - name: Create file with content
+      file:
+        path: "{{ temp_directory }}/{{ filename }}"
+        state: touch
+
+    - name: Write content to file
+      copy:
+        content: "{{ file_content }}"
+        dest: "{{ temp_directory }}/{{ filename }}"
+
 ##############################################################################
 
 - name: Other

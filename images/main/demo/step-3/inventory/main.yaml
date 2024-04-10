@@ -3,6 +3,11 @@ all:
     webserver:
       ansible_host: worker_1
       http_directory: /data/webserver
+      temp_directory: /temp
+      filename: newfile.txt
+      file_content: |
+        The newly created file is filled with this content.
+        This is a new line.
 
     redis:
       ansible_host: worker_2
